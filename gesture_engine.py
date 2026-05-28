@@ -1,6 +1,5 @@
 import threading
 import handsfree
-
 class GestureEngine:
     def __init__(self):
         self.running = False
@@ -10,7 +9,7 @@ class GestureEngine:
 
     def start(self):
         self.running = True
-        handsfree.main(self)   # call your backend
+        handsfree.main(self)
 
     def stop(self):
         self.running = False
