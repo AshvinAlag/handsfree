@@ -381,55 +381,56 @@ def trigger_prev_desktop():
         print(f"Error switching desktop: {e}")
 
 
-# --- STATE TRACKING ---
-# Left Hand Click State
-left_ready_to_click = False  
-
-# Right Hand Swipe History for Backspace Gesture
-right_hand_history = []
-last_swipe_time = 0.0
-SWIPE_LEFT_THRESHOLD = 0.8  # Threshold relative to palm size
-SWIPE_COOLDOWN_SEC = 0.4
-
-# Replicating Mode States
-replicating_mode = False
-last_mode_toggle_time = 0.0
-MODE_TOGGLE_COOLDOWN = 1.0  # Cooldown between state switches
-
-# Right Hand Multitasking State
-right_ready_to_open = False   
-
-# Right Hand Volume Control State
-volume_mode_active = False
-volume_anchor_y = None
-
-# Zoom Mode State
-zoom_mode_active = False
-zoom_anchor_ratio = None
-
-# Head Tilt States
-head_ready_to_open_keyboard = True
-head_tilted_up = False
-head_tilted_down = False
-head_tilted_left = False
-
-# Head Flick State
-nose_history = []
-last_flick_time = 0.0
-
-# Drawing Mode State
-drawing_active = False
-drawing_points = []
-
-# Cursor Smoothing History
-prev_screen_x = None
-prev_screen_y = None
-
-# Screen Resolution (Read once)
-screen_w, screen_h = pyautogui.size()
-print(f"Screen resolution detected: {screen_w}x{screen_h}")
 
 def main(engine):
+    # --- STATE TRACKING ---
+    # Left Hand Click State
+    left_ready_to_click = False  
+
+    # Right Hand Swipe History for Backspace Gesture
+    right_hand_history = []
+    last_swipe_time = 0.0
+    SWIPE_LEFT_THRESHOLD = 0.8  # Threshold relative to palm size
+    SWIPE_COOLDOWN_SEC = 0.4
+
+    # Replicating Mode States
+    replicating_mode = False
+    last_mode_toggle_time = 0.0
+    MODE_TOGGLE_COOLDOWN = 1.0  # Cooldown between state switches
+
+    # Right Hand Multitasking State
+    right_ready_to_open = False   
+
+    # Right Hand Volume Control State
+    volume_mode_active = False
+    volume_anchor_y = None
+
+    # Zoom Mode State
+    zoom_mode_active = False
+    zoom_anchor_ratio = None
+
+    # Head Tilt States
+    head_ready_to_open_keyboard = True
+    head_tilted_up = False
+    head_tilted_down = False
+    head_tilted_left = False
+
+    # Head Flick State
+    nose_history = []
+    last_flick_time = 0.0
+
+    # Drawing Mode State
+    drawing_active = False
+    drawing_points = []
+
+    # Cursor Smoothing History
+    prev_screen_x = None
+    prev_screen_y = None
+
+    # Screen Resolution (Read once)
+    screen_w, screen_h = pyautogui.size()
+    print(f"Screen resolution detected: {screen_w}x{screen_h}")
+
     cap = cv2.VideoCapture(0)
     while cap.isOpened():
         print("Capturing frame...")
@@ -961,12 +962,8 @@ def main(engine):
             right_hand_history = []
 
         engine.update_frame(image)
-        cv2.imshow('MediaPipe Tracking', image)
-        
-        key = cv2.waitKeyEx(5)
-        if key in [45, 0x2D, 0x2d0000]:
-            print("Closing Python script via Insert key...")
-            break
+        cv2.waitKey(1)
+
 
     cap.release()
     cv2.destroyAllWindows()

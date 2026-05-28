@@ -64,4 +64,6 @@ def status():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    import threading
+    threading.Thread(target=engine.start, daemon=True).start()
+    app.run(debug=True)
