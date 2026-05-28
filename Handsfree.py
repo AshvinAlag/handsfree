@@ -893,7 +893,7 @@ while cap.isOpened():
         # Add visual hologram HUD headers
         cv2.putText(canvas, "SYSTEM: DIGITAL TWIN REPLICATOR ACTIVE", (20, 40), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2, cv2.LINE_AA)
-        cv2.putText(canvas, "EXIT: Wakanda", (20, h - 25), 
+        cv2.putText(canvas, "EXIT: Wakanda Forever", (20, h - 25), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
 
         cv2.imshow('Twin Replicator', canvas)
